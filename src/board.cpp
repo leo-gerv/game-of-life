@@ -15,3 +15,8 @@ Board::~Board()
     swapMatrix->clear();
     delete swapMatrix;
 }
+
+QVector<QVector<bool> >& Board::currentRound()
+{
+    return *matrix;
+}
