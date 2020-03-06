@@ -7,6 +7,8 @@
 
 #include <QGridLayout>
 
+#include <QTimer>
+
 #include "board.h"
 #include "boardwidget.h"
 
@@ -29,6 +31,16 @@ private:
     BoardWidget *boardWidget;
 
     QGridLayout *layout;
+
+    QTimer *timer;
+
+    bool manualChange;
+
+private slots:
+    void on_startButton_clicked();
+    void on_doubleSpinBox_valueChanged(double);
+    void on_horizontalSlider_valueChanged(int);
+    void reqNextRound();
 };
 
 #endif // MAINWINDOW_H

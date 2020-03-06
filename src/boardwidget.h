@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QBrush>
 #include <QPen>
+#include <QSizePolicy>
 
 #include <QRect>
 
@@ -18,9 +19,9 @@ class BoardWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BoardWidget(Board& board, QWidget *parent = 0);
+    explicit BoardWidget(Board *board, QWidget *parent = 0);
 
-    Board board;
+    Board *board;
     bool displayBorders;
 
     QBrush borderBrush, aliveBrush, deadBrush;

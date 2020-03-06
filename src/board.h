@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <QVector>
+#include <QDebug>
 
 class Board
 {
@@ -17,8 +18,8 @@ public:
     int getHeight() const { return height; }
 
 protected:
-    int width, height;
-    QVector<QVector<bool> > *matrix, *swapMatrix;
+    int width, height, currentMat;
+    QVector<QVector<bool> > **matrices;
 
     int neighbours(int &x, int &y);
 };
