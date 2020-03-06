@@ -1,0 +1,6 @@
+# Build
+bin
+
+# User
+*.user
+
