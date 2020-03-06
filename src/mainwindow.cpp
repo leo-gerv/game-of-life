@@ -4,7 +4,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    board(Board(8, 8)),
+    board(Board(20, 20)),
     boardWidget(new BoardWidget(&board, this)),
     timer(new QTimer(this)),
     manualChange(true)
@@ -58,5 +58,17 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 void MainWindow::reqNextRound()
 {
     board.moveNext();
+    boardWidget->repaint();
+}
+
+void MainWindow::on_colSpin_valueChanged(int value)
+{
+    board.setHeight(value);
+    boardWidget->repaint();
+}
+
+void MainWindow::on_rowSpin_valueChanged(int value)
+{
+    board.setWidth(value);
     boardWidget->repaint();
 }

@@ -17,6 +17,9 @@ public:
     int getWidth() const { return width; }
     int getHeight() const { return height; }
 
+    void setWidth(int value);
+    void setHeight(int value);
+
 protected:
     int width, height, currentMat;
     QVector<QVector<bool> > **matrices;

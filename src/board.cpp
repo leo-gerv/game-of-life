@@ -80,3 +80,26 @@ int Board::neighbours(int &x, int &y)
 
     return r;
 }
+
+void Board::setHeight(int value)
+{
+    for (int i = 0; i < 2; i++) {
+        matrices[i]->resize(value);
+        for (int k = height; k < value; k++) {
+            (*matrices[i])[k] = QVector<bool>(width, false);
+        }
+    }
+    height = value;
+}
+
+void Board::setWidth(int value)
+{
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < height; j++) {
+            (*matrices[i])[j].resize(value);
+            for (int k = width; k < value; k++)
+                (*matrices[i])[j][k] = false;
+        }
+    }
+    width = value;
+}

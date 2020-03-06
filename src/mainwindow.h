@@ -40,6 +40,8 @@ private slots:
     void on_startButton_clicked();
     void on_doubleSpinBox_valueChanged(double);
     void on_horizontalSlider_valueChanged(int);
+    void on_colSpin_valueChanged(int);
+    void on_rowSpin_valueChanged(int);
     void reqNextRound();
 };
 
