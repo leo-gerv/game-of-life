@@ -11,9 +11,16 @@ public:
 
     QVector<QVector<bool> >& currentRound();
 
+    void moveNext();
+
+    int getWidth() const { return width; }
+    int getHeight() const { return height; }
+
 protected:
     int width, height;
     QVector<QVector<bool> > *matrix, *swapMatrix;
+
+    int neighbours(int &x, int &y);
 };
 
 #endif // BOARD_H

@@ -5,7 +5,10 @@
 
 #include <QDebug>
 
+#include <QGridLayout>
+
 #include "board.h"
+#include "boardwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +26,9 @@ public:
 private:
     Ui::MainWindow *ui;
     Board board;
+    BoardWidget *boardWidget;
+
+    QGridLayout *layout;
 };
 
 #endif // MAINWINDOW_H
