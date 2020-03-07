@@ -20,7 +20,7 @@
       <x>250</x>
       <y>20</y>
       <width>151</width>
-      <height>221</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -33,6 +33,13 @@
      <string>Settings</string>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="5" column="0" colspan="2">
+      <widget class="QPushButton" name="kill">
+       <property name="text">
+        <string>Kill all cells</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <widget class="QLabel" name="label">
        <property name="text">
@@ -53,31 +60,12 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QDoubleSpinBox" name="doubleSpinBox">
-       <property name="minimum">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>240.000000000000000</double>
-       </property>
-       <property name="value">
-        <double>1.000000000000000</double>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Cells/row</string>
        </property>
       </widget>
-     </item>
-     <item row="5" column="0" colspan="2">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="2" column="0" colspan="2">
       <widget class="QPushButton" name="startButton">
@@ -93,10 +81,29 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Cells/row</string>
+     <item row="7" column="0" colspan="2">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="0">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox">
+       <property name="minimum">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>240.000000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
        </property>
       </widget>
      </item>
@@ -104,6 +111,9 @@
       <widget class="QSpinBox" name="colSpin">
        <property name="minimum">
         <number>5</number>
+       </property>
+       <property name="maximum">
+        <number>300</number>
        </property>
        <property name="value">
         <number>20</number>
@@ -115,8 +125,18 @@
        <property name="minimum">
         <number>5</number>
        </property>
+       <property name="maximum">
+        <number>300</number>
+       </property>
        <property name="value">
         <number>20</number>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="2">
+      <widget class="QPushButton" name="breed">
+       <property name="text">
+        <string>Fill with alive cells</string>
        </property>
       </widget>
      </item>
@@ -132,6 +152,14 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="exportBoard"/>
+    <addaction name="importBoard"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -142,6 +170,16 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="exportBoard">
+   <property name="text">
+    <string>Export board</string>
+   </property>
+  </action>
+  <action name="importBoard">
+   <property name="text">
+    <string>Import board</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

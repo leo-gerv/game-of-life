@@ -9,6 +9,10 @@
 
 #include <QTimer>
 
+#include <QFileDialog>
+#include <QString>
+#include <QMessageBox>
+
 #include "board.h"
 #include "boardwidget.h"
 
@@ -42,6 +46,10 @@ private slots:
     void on_horizontalSlider_valueChanged(int);
     void on_colSpin_valueChanged(int);
     void on_rowSpin_valueChanged(int);
+    void on_kill_clicked();
+    void on_breed_clicked();
+    void on_exportBoard_triggered();
+    void on_importBoard_triggered();
     void reqNextRound();
 };
 

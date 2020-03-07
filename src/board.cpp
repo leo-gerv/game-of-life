@@ -103,3 +103,76 @@ void Board::setWidth(int value)
     }
     width = value;
 }
+
+void Board::setAll(bool value)
+{
+    for (QVector<bool> &vect: *matrices[currentMat]) {
+        for (bool &cell: vect) {
+            cell = value;
+        }
+    }
+}
+
+bool Board::saveToFile(const QString &fileName)
+{
+    QFile f(fileName);
+
+    if (!f.open(QIODevice::ReadWrite))
+        return false;
+
+    QTextStream out(&f);
+    out << height << "x" << width;
+
+    for (QVector<bool> &vect: *matrices[currentMat]) {
+        out << '\n';
+        for (bool &cell: vect) {
+            out << (cell ? 'O' : 'X');
+        }
+    }
+
+    f.close();
+
+    return true;
+}
+
+bool Board::loadFromFile(const QString &fileName)
+{
+    QFile f(fileName);
+
+    if (!f.open(QIODevice::ReadOnly))
+        return false;
+
+    QTextStream in(&f);
+
+    QStringList h = in.readLine().split('x');
+
+    if (h.length() != 2)
+        return false;
+
+    setHeight(h[0].toInt());
+    setWidth(h[1].toInt());
+
+    for (int i = 0; i < height; i++) {
+        if (in.atEnd())
+            return false;
+        QString line = in.readLine();
+        if (line.length() != width)
+            return false;
+        for (int j = 0; j < width; j++) {
+            switch (line[j].toLatin1()) {
+            case 'X':
+                (*matrices[currentMat])[i][j] = 0;
+                break;
+            case 'O':
+                (*matrices[currentMat])[i][j] = 1;
+                break;
+            default:
+                return false;
+                break;
+            }
+        }
+    }
+
+    f.close();
+    return true;
+}

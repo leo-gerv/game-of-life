@@ -4,6 +4,10 @@
 #include <QVector>
 #include <QDebug>
 
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
+
 class Board
 {
 public:
@@ -19,6 +23,11 @@ public:
 
     void setWidth(int value);
     void setHeight(int value);
+
+    void setAll(bool value);
+
+    bool saveToFile(const QString &fileName);
+    bool loadFromFile(const QString &fileName);
 
 protected:
     int width, height, currentMat;

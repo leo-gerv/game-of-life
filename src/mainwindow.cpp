@@ -72,3 +72,36 @@ void MainWindow::on_rowSpin_valueChanged(int value)
     board.setWidth(value);
     boardWidget->repaint();
 }
+
+void MainWindow::on_breed_clicked()
+{
+    board.setAll(true);
+    boardWidget->repaint();
+}
+
+void MainWindow::on_kill_clicked()
+{
+    board.setAll(false);
+    boardWidget->repaint();
+}
+
+void MainWindow::on_exportBoard_triggered()
+{
+    QString path = QFileDialog::getSaveFileName(this, "Export the current board"); // Blocks the loop, no need to stop the timer
+    if (path.isEmpty())
+        return;
+    if (!board.saveToFile(path))
+        QMessageBox::critical(this, "Error", "Could not write the file. Please check your permissions.");
+}
+
+void MainWindow::on_importBoard_triggered()
+{
+    QString path = QFileDialog::getOpenFileName(this, "Import a board");
+    if (path.isEmpty())
+        return;
+    if (!board.loadFromFile(path))
+        QMessageBox::critical(this, "Error", "Unable to import the board. It may be corrupted or missing permissions.");
+    ui->rowSpin->setValue(board.getWidth());
+    ui->colSpin->setValue(board.getHeight());
+    boardWidget->repaint();
+}
