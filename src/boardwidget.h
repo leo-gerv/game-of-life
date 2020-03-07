@@ -30,7 +30,6 @@ protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);
 
-    int cellWidth, cellHeight;
 
 signals:
     

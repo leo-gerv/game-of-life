@@ -17,8 +17,8 @@ void BoardWidget::paintEvent(QPaintEvent *)
 
     QVector<QVector<bool> > *matrix = &board->currentRound();
 
-    cellHeight = height()/board->getHeight();
-    cellWidth = width()/board->getWidth();
+    int cellHeight = height()/board->getHeight();
+    int cellWidth = width()/board->getWidth();
 
     for (int y = 0; y < board->getHeight(); y++) {
         for (int x = 0; x < board->getWidth(); x++) {
@@ -38,6 +38,6 @@ void BoardWidget::paintEvent(QPaintEvent *)
 void BoardWidget::mousePressEvent(QMouseEvent *e)
 {
     QPoint pos = e->pos();
-    board->currentRound()[pos.y() / cellHeight][pos.x() / cellWidth] ^= 1;
+    board->currentRound()[pos.y() * board->getHeight() / height()][pos.x() * board->getWidth() / width()] ^= 1;
     update();
 }
